@@ -73,11 +73,13 @@ app.use('*', (req, res) => {
 });
 
 // Start server
+const BASE_URL = process.env.CLIENT_URL || `http://localhost:${PORT}`;
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Rent Control Backend running on port ${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/health`);
-  console.log(`💳 Stripe webhook: http://localhost:${PORT}/webhooks/stripe`);
-  console.log(`🔗 API endpoints: http://localhost:${PORT}/api`);
+  console.log(`📊 Health check: ${BASE_URL}/health`);
+  console.log(`💳 Stripe webhook: ${BASE_URL}/webhooks/stripe`);
+  console.log(`🔗 API endpoints: ${BASE_URL}/api`);
 });
 
 module.exports = app;
